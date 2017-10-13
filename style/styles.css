@@ -1,0 +1,27 @@
+.search-box {
+    background: #fff;
+    margin-top: 20px;
+    border-radius: 2px;
+    width: 364px;
+    height: 48px;
+    border-bottom: 1px solid transparent;
+    transition-property: background,box-shadow;
+    transition-duration: 0.3s;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 20px;
+    z-index: 4;
+}
+
+.places-container {
+    position: absolute;
+    width: 361px;
+    z-index: 2;
+    left: 115px;
+    top: 120px;
+    /*overflow: hidden;*/
+    overflow-x: hidden;
+    border-radius: 2px;
+    box-shadow: 1px 1px 15px;
+    max-height: 90%;
+}

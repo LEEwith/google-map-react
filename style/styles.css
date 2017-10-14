@@ -3,25 +3,57 @@
     margin-top: 20px;
     border-radius: 2px;
     width: 364px;
-    height: 48px;
+    height: 40px;
     border-bottom: 1px solid transparent;
     transition-property: background,box-shadow;
     transition-duration: 0.3s;
     box-sizing: border-box;
     padding: 10px;
     font-size: 20px;
-    z-index: 4;
+    z-index: 1;
 }
 
 .places-container {
     position: absolute;
     width: 361px;
     z-index: 2;
-    left: 115px;
-    top: 120px;
+    left: 25px;
+    top: 124px;
     /*overflow: hidden;*/
     overflow-x: hidden;
     border-radius: 2px;
     box-shadow: 1px 1px 15px;
     max-height: 90%;
+}
+
+.item-box {
+    display: flex;
+    background: white;
+    justify-content: space-between;
+}
+
+.item-image {
+    width: 80px;
+    height: 91px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.item-text{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.item-text > p, .item-text >strong{
+    margin-bottom: 0;
+    font-size: small;
+}
+
+.list-item{
+    padding: 0.25rem 0.25rem;
+}
+
+#pac-input{
+    margin-left: 24px;
 }

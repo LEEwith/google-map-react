@@ -33,7 +33,8 @@ class Map extends Component {
          */
         const map = new google.maps.Map(document.getElementById('map'), {
             zoom: 13,
-            center: this.state.position
+            center: this.state.position,
+            mapTypeControl: false
         });
 
         /**

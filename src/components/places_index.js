@@ -12,15 +12,14 @@ export default class PlacesIndex extends Component {
         this.renderPlaces = this.renderPlaces.bind(this);
     }
 
-    renderPlaces()  {
+    renderPlaces() {
         return(
             this.props.places.map((place) => {
                 return (
-                        <li key={place.id}>
-                            <Placesitem/>
+                        <li className="list-group-item" key={place.id}>
+                            <Placesitem place={place}/>
                         </li>
                     )
-
             })
         )
     } // end of renderPlaces
@@ -29,7 +28,6 @@ export default class PlacesIndex extends Component {
         return(
             <div>
                 <ul className="list-group places-container">
-                    render
                     {this.renderPlaces()}
                 </ul>
             </div>

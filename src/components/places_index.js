@@ -16,7 +16,7 @@ export default class PlacesIndex extends Component {
         return(
             this.props.places.map((place) => {
                 return (
-                        <li className="list-group-item" key={place.id}>
+                        <li className="list-group-item" key={place.place.id}>
                             <Placesitem place={place}/>
                         </li>
                     )

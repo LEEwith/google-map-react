@@ -127,15 +127,15 @@ class Map extends Component {
                     bounds.extend(place.geometry.location);
                 }
 
-                // allPlaces.push({
-                //     place: place,
-                //     marker: marker
-                // });
+                allPlaces.push({
+                    place: place,
+                    marker: marker
+                });
 
             }); // end of places for each
 
             this.setState({
-                places: places,
+                places: allPlaces,
                 });
 
             map.fitBounds(bounds);

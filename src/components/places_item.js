@@ -10,6 +10,8 @@ export default class Placesitem extends  Component {
         super(props);
         this.config = this.config.bind(this);
         this.rateStars = this.rateStars.bind(this);
+        this.bounceMarker = this.bounceMarker.bind(this);
+        this.stopBounce = this.stopBounce.bind(this);
     }
 
     config() {
@@ -19,6 +21,14 @@ export default class Placesitem extends  Component {
                 maxHeight: 91
             }
         }
+    }
+
+    bounceMarker() {
+        this.props.place.marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+
+    stopBounce() {
+        this.props.place.marker.setAnimation(null);
     }
 
     rateStars(num) {
@@ -32,16 +42,32 @@ export default class Placesitem extends  Component {
     }
 
     render() {
-        const  img = this.props.place.photos ? this.props.place.photos[0].getUrl(this.config().itemPhotoSize) : './assets/no_image.png';
+        const {place} = this.props.place;
+
+        // const  img = this.props.place.place.photos ? this.props.place.place.photos[0].getUrl(this.config().itemPhotoSize) : './assets/no_image.png';
+        const  img = place.photos ? place.photos[0].getUrl(this.config().itemPhotoSize) : './assets/no_image.png';
+
+        // return(
+        //     <div className="item-box" onMouseOver = {this.bounceMarker} onMouseOut={this.stopBounce}>
+        //         <div className="item-text">
+        //             <strong>{this.props.place.place.name}</strong>
+        //             {this.props.place.place.rating ?<p>{this.rateStars(this.props.place.place.rating)}<span>&nbsp;&nbsp;&nbsp;{'$'.repeat(this.props.place.place.price_level)}</span></p> : <p>{'$'.repeat(this.props.place.place.price_level)}</p>
+        //             }
+        //             <p>{this.props.place.place.formatted_address}</p>
+        //             <p>{this.props.place.place.opening_hours.open_now ? "Open" :"Closed"}</p>
+        //         </div>
+        //         <img className='item-image' src={img} />
+        //     </div>
+        // )
 
         return(
-            <div className="item-box">
+            <div className="item-box" onMouseOver = {this.bounceMarker} onMouseOut={this.stopBounce}>
                 <div className="item-text">
-                    <strong>{this.props.place.name}</strong>
-                    {this.props.place.rating ?<p>{this.rateStars(this.props.place.rating)}<span>&nbsp;&nbsp;&nbsp;{'$'.repeat(this.props.place.price_level)}</span></p> : <p>{'$'.repeat(this.props.place.price_level)}</p>
+                    <strong>{place.name}</strong>
+                    { place.rating ?<p>{this.rateStars(place.rating)}<span>&nbsp;&nbsp;&nbsp;{'$'.repeat(place.price_level)}</span></p> : <p>{'$'.repeat(place.price_level)}</p>
                     }
-                    <p>{this.props.place.formatted_address}</p>
-                    <p>{this.props.place.opening_hours.open_now ? "Open" :"Closed"}</p>
+                    <p>{place.formatted_address}</p>
+                    <p>{place.opening_hours.open_now ? "Open" :"Closed"}</p>
                 </div>
                 <img className='item-image' src={img} />
             </div>

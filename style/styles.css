@@ -1,16 +1,18 @@
 .search-box {
-    background: #fff;
     margin-top: 20px;
-    border-radius: 2px;
+    padding: 10px;
     width: 364px;
     height: 40px;
+    background: #fff;
     border-bottom: 1px solid transparent;
     transition-property: background,box-shadow;
     transition-duration: 0.3s;
     box-sizing: border-box;
-    padding: 10px;
     font-size: 20px;
     z-index: 1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .places-container {

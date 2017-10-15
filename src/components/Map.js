@@ -8,11 +8,6 @@ class Map extends Component {
         this.state = {
             position: {lat: 37.782703500000004, lng: -122.4194},
             places: [],
-            allPlaces: [],
-            getDetails: null,
-            detailMarker: null,
-            placeDetails: null,
-            shouldUpdate: true
         };
     }
 
@@ -79,13 +74,34 @@ class Map extends Component {
             });
         };
 
+
+        /**
+         *  update map when the map bound change
+         */
+
+        let getNewPlaces = () => {
+            let newPlaces = [];
+            // let bounds = new google.maps.LatLngBounds();
+            let bounds = map.getBounds();
+            console.log(bounds);
+
+        }
+
         /**
          *  add EventListner part
          */
 
         map.addListener('bounds_changed', function() {
             console.log('bounds_changed');// 如果你把地图往下拉的时候会出现
-            searchBox.setBounds(map.getBounds());
+            let newBounds = map.getBounds();
+            searchBox.setBounds(newBounds);
+            map.setCenter(newBounds);
+
+            console.log('newBound',newBounds);
+            console.log('newMapCenter',map.getCenter());
+            // this.setState({
+            //     places: null
+            // });
         });
 
         searchBox.addListener('places_changed', () => {
@@ -139,17 +155,19 @@ class Map extends Component {
                 });
 
             map.fitBounds(bounds);
+            }
+        );// end of the searchBox add Event Listener
 
+        google.maps.event.addListener(map,'bounds_changed', getNewPlaces);
 
-        });// end of the searchBox add Event Listener
-    }
+    }// end of Component did mount
 
 
     render() {
         return(
             <div>
                 <div>
-                    <input id="pac-input" className="search-box" type="text"/>
+                    <input id="pac-input" ref = "input"className="search-box" type="text"/>
                     <div id='map' style={{width: "100%", height: "100%"}}></div>
                 </div>
                 <PlacesIndex

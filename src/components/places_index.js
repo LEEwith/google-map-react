@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import Placesitem from './places_item';
+import PlacesItem from './places_item';
 
 export default class PlacesIndex extends Component {
 
@@ -17,7 +17,7 @@ export default class PlacesIndex extends Component {
             this.props.places.map((place) => {
                 return (
                         <li className="list-group-item" key={place.place.id}>
-                            <Placesitem place={place}/>
+                            <PlacesItem place={place}/>
                         </li>
                     )
             })
@@ -27,7 +27,7 @@ export default class PlacesIndex extends Component {
     render() {
         return(
             <div>
-                <ul className="list-group places-container">
+                <ul className="list-group places-box">
                     {this.renderPlaces()}
                 </ul>
             </div>

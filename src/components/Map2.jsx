@@ -19,6 +19,8 @@ class Map extends Component {
         const mapOptions = {
             zoom: 13,
             center: {lat: 37.782703500000004, lng: -122.4194},
+            mapTypeControl: false
+
         }
         return new google.maps.Map(this.refs.map, mapOptions)
     }
@@ -37,6 +39,8 @@ class Map extends Component {
             // been rendered because we need to manipulate the DOM for Google =(
             this.map = this.createMap();
             const searchBox = new google.maps.places.SearchBox(this.refs.sinput);
+            this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.refs.sinput);
+
     }
 
 
@@ -66,7 +70,10 @@ class Map extends Component {
                     onLoad={this.handleScriptLoad.bind(this)}
                 />
                 <input id="pac-input" ref = "sinput" className="search-box" type="text"/>
-                <div ref='map' style={{width: "100%", height: "100%"}}></div>
+                {this.props.children}
+                <div ref='map' style={{width: "100%", height: "100%"}}>
+                </div>
+
             </div>
         );
     }
